@@ -3,7 +3,7 @@
 ## QUESTION:
 Write a Java program to write characters to a file using FileWriter.
 
-## AIM:
+## AIM: 
 To write character data into a file using the FileWriter class in Java.
 
 ## ALGORITHM :
