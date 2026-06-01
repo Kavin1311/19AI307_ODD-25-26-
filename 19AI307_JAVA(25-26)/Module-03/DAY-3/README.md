@@ -1,65 +1,104 @@
-# Ex.No:1(C) LOOPING STATEMENT
+# Ex.No:3(C) ABSTRACTION
 
 ## QUESTION:
-Write a Java program to calculate the factorial of a number using a for loop. The factorial of n is the product of all positive integers less than or equal to n.
+Description:
+Create abstract class GameScore with method finalScore().
+Subclasses:
 
-<img width="273" height="132" alt="image" src="https://github.com/user-attachments/assets/f65cf9d3-9661-4815-88ec-90609cbf2281" />
+ArcadeGame: score = baseScore + (level × 100)
+
+PuzzleGame: score = (attempts ≤ 3) ? 1000 - (attempts × 100) : 500
+
+Input Format:
+
+First line: 1 or 2
+Second line: base, level (or attempts)
+
+Output Format:
+
+Final score (int)
+
+
 
 ## AIM:
-To write a Java program that calculates the factorial of a given number using a for loop.
-
+To write a Java program using an abstract class GameScore with subclasses ArcadeGame and PuzzleGame, each implementing its own finalScore() method.
 
 ## ALGORITHM :
-1. Start the program and read an integer n from the user.
-
-2. Initialize a variable factorial to 1 to store the result.
-
-3. Use a for loop from 1 to n, multiplying factorial by the loop counter in each iteration.
-
-4. After the loop ends, print the value of factorial as the factorial of n.
-
-5. Stop the program.
-
-
+1.	Create an abstract class GameScore with an abstract method finalScore().
+2.	Define subclass ArcadeGame where finalScore = baseScore + (level × 100).
+3.	Define subclass PuzzleGame where
+4.	If attempts ≤ 3, score = 1000 - (attempts × 100)
+5.	Else score = 500.
+6.	Take user input for game type and relevant values.
+7.	Display the final score based on game type.
 
 
 
 ## PROGRAM:
  ```
 /*
-Program to implement a Looping Statement using Java
+Program to implement a Abstraction using Java
 Developed by: T.KAVINAJAI
 RegisterNumber: 212223100020
 */
 ```
 
 ## SOURCE CODE:
-
 ```
-import java.util.Scanner;
+import java.util.*;
 
-public class FactorialCalculator {
+abstract class GameScore {
+    abstract int finalScore();
+}
+
+class ArcadeGame extends GameScore {
+    int base, level;
+    ArcadeGame(int base, int level) {
+        this.base = base;
+        this.level = level;
+    }
+    int finalScore() {
+        return base + (level * 100);
+    }
+}
+
+class PuzzleGame extends GameScore {
+    int attempts;
+    PuzzleGame(int attempts) {
+        this.attempts = attempts;
+    }
+    int finalScore() {
+        if (attempts <= 3)
+            return 1000 - (attempts * 100);
+        else
+            return 500;
+    }
+}
+
+public class prog {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();  
-        long factorial = 1;
-
-        for (int i = 1; i <= n; i++) {
-            factorial *= i;
+        int type = sc.nextInt();
+        if (type == 1) {
+            int base = sc.nextInt();
+            int level = sc.nextInt();
+            ArcadeGame game = new ArcadeGame(base, level);
+            System.out.println(game.finalScore());
+        } else if (type == 2) {
+            int attempts = sc.nextInt();
+            PuzzleGame game = new PuzzleGame(attempts);
+            System.out.println(game.finalScore());
         }
-
-        System.out.println("Factorial of " + n + " is: " + factorial);
     }
 }
 ```
 
 ## OUTPUT:
-
-<img width="749" height="256" alt="image" src="https://github.com/user-attachments/assets/e75f967e-5cc0-4a71-9456-4c387a9f47d5" />
-
+<img width="1147" height="386" alt="image" src="https://github.com/user-attachments/assets/4447ae81-3e1b-46a2-91a4-e2ad7316e6a6" />
 
 ## RESULT:
-The program successfully computes and displays the factorial value of the entered number.
+The program successfully demonstrates abstraction and inheritance by computing the final score for different game types using subclass-specific logic.
+
 
 
 
