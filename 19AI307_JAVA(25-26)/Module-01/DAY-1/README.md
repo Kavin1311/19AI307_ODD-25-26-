@@ -25,8 +25,8 @@ To write a Java program that prints the message "Hey, my first java program!" to
  ```
 /*
 Program to implement variables and Operators using Java
-Developed by: K.HEMANATH
-RegisterNumber: 212223100012
+Developed by: T.KAVINAJAI
+RegisterNumber: 212223100020
 */
 ```
 
